@@ -49,6 +49,7 @@ let currentColor = 'yellow';
 let isRandom = false;
 
 getJoke();
+
 rl.on('line', (line) => {
   if ('tfy' === line) {
     console.log('这是一个菜单哦， 恭喜你，为了支持一下作者，可不可以赏点银子呢 支付宝账号 1315803594@qq.com'.yellow);
