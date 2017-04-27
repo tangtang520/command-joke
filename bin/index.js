@@ -6,7 +6,7 @@ const colors = require('colors');
 
 //支持的文字颜色
 let colorSupport = [
-  'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'grey, random'
+  'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'grey', 'random'
 ];
 
 let promptMsg = '您正在使用tfy-joke,按下回车查看笑话 >>>\n'.blue + '我们支持以下颜色更换字体哦\n'.cyan +
@@ -59,13 +59,13 @@ rl.on('line', (line) => {
     process.exit(0);
   }
   if (jakeList.length) {
-    if ('random' === line || isRandom) {
-      if (!isRandom) isRandom = true;
-      if (isRandom) console.log(jakeList.shift()[colorSupport[Math.floor((colorSupport.length - 1) * Math.random())]]);
-    } else if (colorSupport.includes(line)) {
+    if(colorSupport.slice(0,colorSupport.length - 1).includes(line)){
       currentColor = line;
       console.log(jakeList.shift()[currentColor]);
       isRandom = false;
+    } else if ('random' === line || isRandom) {
+      if (!isRandom) isRandom = true;
+      if (isRandom) console.log(jakeList.shift()[colorSupport[Math.floor((colorSupport.length - 1) * Math.random())]]);
     } else {
       console.log(jakeList.shift()[currentColor]);
       isRandom = false;
